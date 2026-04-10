@@ -10,7 +10,6 @@ import {
   ChevronRight,
   AlertTriangle,
   LogOut,
-  Radio,
   Clock,
   Loader2,
   HardDriveDownload,
@@ -28,16 +27,13 @@ import {
   MessageSquareText,
   ShieldAlert,
   MessageCircle,
-  Search,
   Phone,
   User,
-  MapPin,
   Lock,
   Eye,
   EyeOff,
   ArrowRight,
   ShieldCheck,
-  Zap,
   Filter,
 } from "lucide-react";
 import type { Patient } from "./types/patient";
@@ -784,12 +780,12 @@ export default function App() {
   const [copied, setCopied] = useState(false);
   const [summaryLang, setSummaryLang] = useState<SummaryLanguage>('en');
   const [activeFilter, setActiveFilter] = useState<RiskFilter>('all');
-  const [searchTerm, setSearchTerm] = useState('');
+  const [_searchTerm, _setSearchTerm] = useState('');
   const [selectedPatient, setSelectedPatient] = useState<Patient | null>(null);
 
   const {
     isListening: isRecording,
-    isSupported: isSpeechSupported,
+    isSupported: _isSpeechSupported,
     transcript: liveTranscript,
     startListening,
     stopListening,
@@ -946,7 +942,7 @@ export default function App() {
   }, [activeMenu, summaryLang]);
 
   /* Waveform bar config */
-  const waveConfig = Array.from({ length: 28 }, (_, i) => ({
+  const _waveConfig = Array.from({ length: 28 }, (_, i) => ({
     delay: ((i * 7) % 28) * 0.045,
     height: 10 + Math.round(Math.sin(i * 0.6) * 12 + 12),
   }));
