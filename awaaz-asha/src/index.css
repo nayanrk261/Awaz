@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Typography ── */
+  --font-sans: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", "Cascadia Code", ui-monospace, monospace;
+
+  /* ── Sidebar ── */
+  --color-sidebar: #1C1C1E;
+  --color-sidebar-hover: #2C2C2E;
+  --color-sidebar-active: #3A3A3C;
+  --color-sidebar-text: #8E8E93;
+  --color-sidebar-text-active: #FFFFFF;
+
+  /* ── Content Surface ── */
+  --color-surface: #F7F5F2;
+  --color-card: #FFFFFF;
+  --color-card-border: #E8E5E0;
+
+  /* ── Primary — Saffron ── */
+  --color-saffron: #E85D27;
+  --color-saffron-dark: #C94D1F;
+  --color-saffron-light: #FDF0EB;
+  --color-saffron-glow: rgba(232, 93, 39, 0.25);
+
+  /* ── Medical Green ── */
+  --color-medical: #1B6E3E;
+  --color-medical-light: #E8F5EE;
+  --color-medical-text: #155731;
+
+  /* ── Crimson — High Risk ── */
+  --color-crimson: #C0392B;
+  --color-crimson-light: #FDECEC;
+  --color-crimson-text: #A93226;
+
+  /* ── Amber — Medium Risk ── */
+  --color-amber: #D4860A;
+  --color-amber-light: #FDF6E8;
+  --color-amber-text: #B8740A;
+
+  /* ── Neutral Text ── */
+  --color-text-primary: #1C1C1E;
+  --color-text-secondary: #636366;
+  --color-text-tertiary: #AEAEB2;
+  --color-white: #FFFFFF;
+  --color-border: #E5E5EA;
+}
+
+/* ── Base ── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d1d6; border-radius: 3px; }
+
+/* ── Pulse ring for mic ── */
+@keyframes pulse-saffron {
+  0%   { transform: scale(1);   opacity: 0.5; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+.animate-pulse-saffron {
+  animation: pulse-saffron 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ── Pulsing glow for High Risk badge ── */
+@keyframes risk-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(192, 57, 43, 0.4); }
+  50%      { box-shadow: 0 0 0 8px rgba(192, 57, 43, 0); }
+}
+.animate-risk-pulse {
+  animation: risk-pulse 2s ease-in-out infinite;
+}
+
+/* ── Float idle ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-5px); }
+}
+.animate-float { animation: float 3s ease-in-out infinite; }
+
+/* ── Waveform bars ── */
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.25); }
+  50%      { transform: scaleY(1); }
+}
+.wave-bar {
+  width: 3px;
+  border-radius: 9999px;
+  transform-origin: center;
+  animation: wave 0.9s ease-in-out infinite;
+}
+
+/* ── Fade in animation ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.35s ease-out both;
+}
+
+/* ── Blink for alert ── */
+@keyframes blink-alert {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.25; }
+}
+.animate-blink { animation: blink-alert 1.2s ease-in-out infinite; }
+
+/* ── Sidebar nav transition ── */
+.nav-item { transition: background-color 0.15s ease, color 0.15s ease; }
